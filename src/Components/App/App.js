@@ -6,6 +6,11 @@ import { userId } from '../../Services/GlobalVariables'
 import Header from '../Header/Header'
 import MenuHorizontal from '../MenuHorizontal/MenuHorizontal'
 
+import Sidebar from '../Sidebar/Sidebar'
+import MenuVertical from '../MenuVertical/MenuVertical'
+
+import Dashboard from '../Dashboard/Dashboard'
+
 function App() {
     const [user, setUser] = useState(null)
 
@@ -30,6 +35,12 @@ function App() {
             <Header>
                 <MenuHorizontal />
             </Header>
+            <main>
+                <Sidebar>
+                    <MenuVertical />
+                </Sidebar>
+                {user ? <Dashboard userProfile={user.profile}/> : ''}
+            </main>   
         </div>
     )
 }

@@ -1,9 +1,9 @@
 @import '../../css/main.scss';
 
-header
+aside
 {
     background-color: $bg-main-color;
-    width: 100%;
-    z-index: 10;
-    height: 100px;
+
+    display: flex;
+    flex-direction: column;
 }

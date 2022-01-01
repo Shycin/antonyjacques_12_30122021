@@ -1,9 +1,10 @@
-ul
+ul.MenuHorizontal
 {
     display: flex;
     justify-content: space-between;
     color: white;
     align-items: center;
+    padding: 20px 0;
 
     li
     {

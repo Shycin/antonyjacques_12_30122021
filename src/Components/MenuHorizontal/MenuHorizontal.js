@@ -3,7 +3,7 @@ import './MenuHorizontal.scss'
 
 function MenuHorizontal() {
     return (
-        <ul>
+        <ul className='MenuHorizontal'>
             <li>
                 <Picto type='logo' />
             </li>
