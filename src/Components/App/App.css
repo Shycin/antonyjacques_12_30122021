@@ -56,7 +56,6 @@ table {
 
 main
 {
-	position: fixed;
 	display: flex;
 	width: 100%;
 	height: calc(100vh - 100px);

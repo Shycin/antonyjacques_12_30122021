@@ -11,6 +11,8 @@ import MenuVertical from '../MenuVertical/MenuVertical'
 
 import Dashboard from '../Dashboard/Dashboard'
 
+import BarCharts from '../Graph/BarChart/BarCharts'
+
 function App() {
     const [user, setUser] = useState(null)
 
@@ -26,9 +28,9 @@ function App() {
         })
     }, [])
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log(user)
+    // }, [user])
 
     return (
         <div className='App'>
@@ -39,7 +41,15 @@ function App() {
                 <Sidebar>
                     <MenuVertical />
                 </Sidebar>
-                {user ? <Dashboard userProfile={user.profile}/> : ''}
+                {user ? 
+                    <Dashboard userProfile={user.profile}>
+                        {
+                            user.activityData ? <BarCharts data={user.activityData.sessions} /> : ''
+                        }
+                    </Dashboard> 
+                : ''}
+
+                
             </main>   
         </div>
     )

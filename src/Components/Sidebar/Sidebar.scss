@@ -6,4 +6,9 @@ aside
 
     display: flex;
     flex-direction: column;
+
+    @media (min-height: 1024px) 
+    {
+        justify-content: center;
+    }
 }
