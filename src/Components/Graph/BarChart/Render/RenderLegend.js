@@ -1,13 +1,15 @@
+import './RenderLegend.scss'
+
 function RenderLegend({ payload }) {
     if (payload && payload.length) {
         return (
-          <div className="custom-tooltip">
-              <ul>
-              {
-                  payload.map( (item, key) => {
-                      return (<li key={key}>{item.payload.label}</li>)
-                  })
-              }
+          <div className="custom-legend">
+                <ul>
+                {
+                    payload.map( (item, key) => {
+                        return (<li key={key} style={{color: item.color}}>{item.payload.label}</li>)
+                    })
+                }
               </ul>
           </div>
         );

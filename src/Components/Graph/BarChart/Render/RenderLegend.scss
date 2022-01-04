@@ -1,0 +1,14 @@
+.custom-legend
+{
+    ul 
+    {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+    }
+
+    ul, li
+    { 
+        list-style: inside;
+    }
+}
