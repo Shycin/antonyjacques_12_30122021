@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import './Header.scss'
+import './index.scss'
 
 function Header({ children }) {
     return <header>{children}</header>

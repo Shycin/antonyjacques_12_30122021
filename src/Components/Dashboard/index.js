@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import './Dashboard.scss'
+import './index.scss'
 
 function Dashboard({ children, userProfile }) {
     return (
@@ -8,7 +8,9 @@ function Dashboard({ children, userProfile }) {
                 <h1>Bonjour <span className='Dashboard__header__firstname'>{userProfile.userInfos.firstName}</span></h1>
                 <div className='Dashboard__description'>Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
             </div>
-            {children}
+            <div className='Dashboard__body'>
+                {children}
+            </div>
         </div>
     )
 }

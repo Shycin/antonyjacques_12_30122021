@@ -1,5 +1,5 @@
 import Picto from '../Picto/Picto'
-import './MenuHorizontal.scss'
+import './index.scss'
 
 function MenuHorizontal() {
     return (

@@ -60,3 +60,14 @@ main
 	width: 100%;
 	height: calc(100vh - 100px);
 }
+
+
+.left
+{
+	flex-grow: 1;
+}
+
+.right
+{
+	flex: 0 0 180px;
+}

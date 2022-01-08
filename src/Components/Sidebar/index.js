@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import './Sidebar.scss'
+import './index.scss'
 
 function Sidebar({ children }) {
     return <aside>{children}</aside>

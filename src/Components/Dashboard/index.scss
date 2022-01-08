@@ -9,7 +9,9 @@
     margin: 50px 100px 0 100px;
 
     &__header
-    {
+    {  
+        margin-bottom: 50px;
+
         h1
         {
             font-size: 48px;
@@ -35,5 +37,11 @@
         line-height: 24px;
         letter-spacing: 0px;
         text-align: left;
+    }
+
+    &__body
+    {
+        grid-template:  "activity activity activity"
+                        "objectifs radar KPI";
     }
 }

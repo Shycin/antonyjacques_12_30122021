@@ -4,6 +4,7 @@ function RenderLegend({ payload }) {
     if (payload && payload.length) {
         return (
           <div className="custom-legend">
+                <h2>Activité quotidienne</h2>
                 <ul>
                 {
                     payload.map( (item, key) => {
