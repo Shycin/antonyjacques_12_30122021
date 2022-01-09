@@ -69,5 +69,6 @@ main
 
 .right
 {
+	flex-direction: column;
 	flex: 0 0 180px;
 }

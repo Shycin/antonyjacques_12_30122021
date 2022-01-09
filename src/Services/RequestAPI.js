@@ -6,9 +6,6 @@ export default function RequestAPI() {
 
         user.data = (name = 'profile', path = '') =>
             new Promise((resole, reject) => {
-                // console.log(
-                //     `${path} - ${URL_API_STAT}/user/${user.userID}/${path}`
-                // )
                 fetch(`${URL_API_STAT}/user/${user.userID}/${path}`)
                     .then((response) => response.json())
                     .then((result) => {

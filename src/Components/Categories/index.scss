@@ -1,0 +1,33 @@
+@import '../../css/main.scss';
+
+.Categories
+{
+    background-color: $bg-second-color;
+    display: flex;
+
+    padding: 20px;
+    text-align: left;
+    align-items: center;
+
+    gap: 10px;
+
+    &__icon
+    {
+
+    }
+
+    &__value
+    {
+        &__data
+        {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        &__type
+        {
+            font-size: 8px;
+        }
+    }
+
+}
