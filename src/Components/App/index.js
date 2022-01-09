@@ -16,6 +16,8 @@ import BarCharts from '../Graph/BarCharts'
 
 import Categories from '../Categories'
 
+import Converter from '../Converter'
+
 function App() {
     const [user, setUser] = useState(null)
 
@@ -52,10 +54,30 @@ function App() {
                                     { user.activityData ? <BarCharts data={user.activityData.sessions} /> : '' }
                                 </div>
                                 <div className='container-flex right'>
-                                    {<Categories icon={<Picto type='calories'/>} userData={{value: (user.profile.keyData.calorieCount/1000).toFixed(3), unit: 'kcal', type: 'Calories'}} />}
-                                    {<Categories icon={<Picto type='proteines' color={'#4AB8FF'} />} userData={{value: user.profile.keyData.proteinCount, unit: 'g', type: 'Proteines'}} />}
-                                    {<Categories icon={<Picto type='glucides' color={'#F9CE23'} />} userData={{value: user.profile.keyData.calorieCount, unit: 'g', type: 'Glucides'}} />}
-                                    {<Categories icon={<Picto type='lipides' color={'#FD5181'} />} userData={{value: user.profile.keyData.calorieCount, unit: 'g', type: 'Lipides'}} />}
+                                    {
+                                        <Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.calorieCount, unit: 'Cal'}), type: 'Calories'}} 
+                                            icon={<Picto type='calories'/>} 
+                                        />
+                                    }
+                                    {
+                                        <Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.proteinCount, unit: 'g'}), type: 'Proteines'}} 
+                                            icon={<Picto type='proteines' color={'#4AB8FF'} />} 
+                                        />
+                                    }
+                                    {
+                                        <Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.carbohydrateCount, unit: 'g'}), type: 'Glucides'}} 
+                                            icon={<Picto type='glucides' color={'#F9CE23'} />} 
+                                        />
+                                    }
+                                    {
+                                        <Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.lipidCount, unit: 'g'}), type: 'Lipides'}} 
+                                            icon={<Picto type='lipides' color={'#FD5181'} />} 
+                                        />
+                                    }
                                 </div>    
                             </div>
                             
