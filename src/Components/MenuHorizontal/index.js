@@ -1,6 +1,16 @@
 import Picto from '../Picto/Picto'
 import './index.scss'
 
+/**
+ * Create and display horizontal Menu
+ * @module MenuHorizontal
+ * @category 3 - Navigation
+ * @component
+ * @example
+ * return (
+ *   <MenuHorizontal/>
+ * )
+*/
 function MenuHorizontal() {
     return (
         <ul className='MenuHorizontal'>

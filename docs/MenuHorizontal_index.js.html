@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Converter/index.js</title>
+    <title>JSDoc: MenuHorizontal/index.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Converter/index.js</h1>
+                        <h1>MenuHorizontal/index.js</h1>
                     </header>
 
                     
@@ -65,34 +65,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+            <pre class="prettyprint source linenums"><code>import Picto from '../Picto/Picto'
+import './index.scss'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+/**
+ * Create and display horizontal Menu
+ * @module MenuHorizontal
+ * @category 3 - Navigation
+ * @component
+ * @example
+ * return (
+ *   &lt;MenuHorizontal/>
+ * )
 */
-function Converter({ props }) {
-    var value, unit;
-    if(props.value > 1000){
-        value = (props.value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
+function MenuHorizontal() {
+    return (
+        &lt;ul className='MenuHorizontal'>
+            &lt;li>
+                &lt;Picto type='logo' />
+            &lt;/li>
+            &lt;li>Accueil&lt;/li>
+            &lt;li>Profil&lt;/li>
+            &lt;li>Réglage&lt;/li>
+            &lt;li>Communauté&lt;/li>
+        &lt;/ul>
+    )
 }
-export default Converter
-
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
-    
-}</code></pre>
+export default MenuHorizontal</code></pre>
         </article>
     </section>
 

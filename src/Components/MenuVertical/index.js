@@ -1,6 +1,16 @@
 import Picto from '../Picto/Picto'
 import './index.scss'
 
+/**
+ * Create and display vertical Menu
+ * @module MenuVertical
+ * @category 3 - Navigation
+ * @component
+ * @example
+ * return (
+ *   <MenuVertical/>
+ * )
+*/
 function MenuVertical() {
     return (
         <ul className='MenuVertical'>
