@@ -8,10 +8,10 @@ import PropTypes from 'prop-types'
  * @prop {string} props.unit Base unit of object
  * @returns {Object} Whether object is convert or keep same value at beginning
 */
-function Converter({ props }) {
-    var value, unit;
-    if(props.value > 1000){
-        value = (props.value/1000).toFixed(3)
+function Converter(props) {
+    var {value, unit} = props;
+    if(value > 1000){
+        value = (value/1000).toFixed(3)
         unit = 'K' + unit
     }
     return {value: value, unit: unit}

@@ -4,7 +4,7 @@ import './index.scss'
 /**
  * Create and display horizontal Menu
  * @module MenuHorizontal
- * @category 3 - Navigation
+ * @category 2 - Navigation
  * @component
  * @example
  * return (

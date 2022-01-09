@@ -18,7 +18,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "doc": "jsdoc -c jsdoc.json",
+        "doc": "SET NODE_ENV=production && jsdoc -c jsdoc.json",
+        "builddoc": "cross-env NODE_ENV=development parcel build docs/entry.js --out-dir docs/build",
         "doccss": "node-sass --include-path scss ./src/sass/doc.scss ./docs/styles.css"
     },
     "eslintConfig": {
@@ -62,6 +63,7 @@
         "prettier": "^2.2.1",
         "sass": "^1.32.8",
         "sass-loader": "^12.4.0",
-        "webpack": "4.44.2"
+        "webpack": "4.44.2",
+        "cross-env": "7.0.3"
     }
 }

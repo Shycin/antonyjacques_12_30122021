@@ -1,9 +1,13 @@
 {
-    "plugins": [],
+    "plugins": [
+        "plugins/markdown",
+        "node_modules/better-docs/component",
+        "node_modules/better-docs/category"
+    ],
     "recurseDepth": 10,
     "source": {
         "include": [ "./src" , "./README.md" ],
-        "includePattern": ".+\\.js(doc|x)?$",
+        "includePattern": "\\.(jsx|js|ts|tsx)$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "sourceType": "module",
@@ -19,7 +23,11 @@
         "template": "./node_modules/better-docs"
     },
     "templates": {
-        "cleverLinks": false,
-        "monospaceLinks": false
+        "better-docs": {
+            "name": "SportSee Documentation",
+            "component": {
+                "wrapper": "./src/JsDoc/JsDoc.js"
+              }
+        }
     }
 }
