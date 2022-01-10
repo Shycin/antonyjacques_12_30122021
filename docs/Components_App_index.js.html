@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/App/index.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/App/index.js</h1>
                     </header>
 
                     
@@ -65,36 +65,105 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from 'react'
+import './index.css'
+import RequestAPI from '../../Services/RequestAPI'
+import { userId } from '../../Services/GlobalVariables'
+import Picto from '../Picto/Picto'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+import Header from '../Header'
+import MenuHorizontal from '../MenuHorizontal'
+
+import Sidebar from '../Sidebar'
+import MenuVertical from '../MenuVertical'
+
+import Dashboard from '../Dashboard'
+
+import BarCharts from '../Graph/BarCharts'
+
+import Categories from '../Categories'
+
+import Converter from '../Converter'
+
+/**
+ * App
+ * @module App
+ * @example
+ * return (
+ *   &lt;App/>
+ * )
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
+function App() {
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        const request = new RequestAPI()
+        request.CreateNewRequest(userId).then((api) => {
+            setUser(api)
+            api.activity().then((activity) => setUser({ ...activity }))
+            api.average_sessions().then((averageSessions) =>
+                setUser({ ...averageSessions })
+            )
+            api.performance().then((performance) => setUser({ ...performance }))
+        })
+    }, [])
+
+    return (
+        &lt;div className='App'>
+            &lt;Header>
+                &lt;MenuHorizontal />
+            &lt;/Header>
+            &lt;main>
+                &lt;Sidebar>
+                    &lt;MenuVertical />
+                &lt;/Sidebar>
+                {user ? 
+                    &lt;Dashboard userProfile={user.profile}>
+                        {
+                            &lt;div className='container-flex--row'>
+                                &lt;div className='container-flex left'>
+                                    { user.activityData ? &lt;BarCharts data={user.activityData.sessions} /> : '' }
+                                &lt;/div>
+                                &lt;div className='container-flex right'>
+                                    {
+                                        &lt;Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.calorieCount, unit: 'Cal'}), type: 'Calories'}} 
+                                            icon={&lt;Picto type='calories'/>} 
+                                        />
+                                    }
+                                    {
+                                        &lt;Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.proteinCount, unit: 'g'}), type: 'Proteines'}} 
+                                            icon={&lt;Picto type='proteines' color={'#4AB8FF'} />} 
+                                        />
+                                    }
+                                    {
+                                        &lt;Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.carbohydrateCount, unit: 'g'}), type: 'Glucides'}} 
+                                            icon={&lt;Picto type='glucides' color={'#F9CE23'} />} 
+                                        />
+                                    }
+                                    {
+                                        &lt;Categories 
+                                            userData={{data: Converter({value: user.profile.keyData.lipidCount, unit: 'g'}), type: 'Lipides'}} 
+                                            icon={&lt;Picto type='lipides' color={'#FD5181'} />} 
+                                        />
+                                    }
+                                &lt;/div>    
+                            &lt;/div>
+                            
+                        }
+                    &lt;/Dashboard> 
+                : ''}
+
+                
+            &lt;/main>   
+        &lt;/div>
+    )
 }
-export default Converter
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
-    
-}</code></pre>
+export default App
+</code></pre>
         </article>
     </section>
 

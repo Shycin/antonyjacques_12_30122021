@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/Graph/BarCharts/index.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/Graph/BarCharts/index.js</h1>
                     </header>
 
                     
@@ -65,36 +65,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+            <pre class="prettyprint source linenums"><code>import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Label } from 'recharts'
+import RenderLegend from './Render/RenderLegend'
+import RenderTooltip from './Render/RenderTooltip'
+import RenderBarChar from './Render/RenderBar'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
+import './index.scss'
+
+/**
+ * BarCharts
+ * @module BarCharts
+ * @category 5 - Chart
  * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+ * @prop {Array} props.data Data array
+ * @example
+ * return (
+ *       &lt;div className='BarChart'>
+ *           &lt;ResponsiveContainer aspect={998/382}>
+ *               &lt;BarChart data={data}>
+ *                   &lt;CartesianGrid strokeDasharray="2 2" vertical={false}/>
+ *                   &lt;XAxis tickLine={false} tickSize={15}/>
+ *                   &lt;YAxis yAxisId={1} orientation="right" domain={['dataMin - 1', 'dataMax']} tickCount={3} allowDecimals={false} axisLine={false} tickLine={false} tickSize={40}/>
+ *                   &lt;YAxis yAxisId={2} hide={true} padding={{left: 50}}/>
+ *                   &lt;Tooltip content={&lt;RenderTooltip />}  position={{ y: 0 }} wrapperStyle={{ left: 50 }}/>
+ *                   &lt;Legend verticalAlign="top" align="right" height={36} content={&lt;RenderLegend />} />
+ *                   &lt;Bar yAxisId={1} dataKey="kilogram" fill="#282D30" barSize={7} shape={&lt;RenderBarChar />} unit="kg" label="Poids (kg)" />
+ *                   &lt;Bar yAxisId={2} dataKey="calories" fill="#E60000" barSize={7} shape={&lt;RenderBarChar />} unit="Kcal" label="Calories brûlées (kCal)" />
+ *               &lt;/BarChart>
+ *           &lt;/ResponsiveContainer>
+ *       &lt;/div>
+ *   )
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
+function BarCharts(props) {
+    const {data} = props
+    return (
+        &lt;div className='BarChart'>
+            &lt;ResponsiveContainer aspect={998/382}>
+                &lt;BarChart data={data}>
+                    &lt;CartesianGrid strokeDasharray="2 2" vertical={false}/>
+                    &lt;XAxis tickLine={false} tickSize={15}/>
+                    &lt;YAxis yAxisId={1} orientation="right" domain={['dataMin - 1', 'dataMax']} tickCount={3} allowDecimals={false} axisLine={false} tickLine={false} tickSize={40}/>
+                    &lt;YAxis yAxisId={2} hide={true} padding={{left: 50}}/>
+                    &lt;Tooltip content={&lt;RenderTooltip />}  position={{ y: 0 }} wrapperStyle={{ left: 50 }}/>
+                    &lt;Legend verticalAlign="top" align="right" height={36} content={&lt;RenderLegend />} />
+                    &lt;Bar yAxisId={1} dataKey="kilogram" fill="#282D30" barSize={7} shape={&lt;RenderBarChar />} unit="kg" label="Poids (kg)" />
+                    &lt;Bar yAxisId={2} dataKey="calories" fill="#E60000" barSize={7} shape={&lt;RenderBarChar />} unit="Kcal" label="Calories brûlées (kCal)" />
+                &lt;/BarChart>
+            &lt;/ResponsiveContainer>
+        &lt;/div>
+    )
 }
-export default Converter
-
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
-    
-}</code></pre>
+export default BarCharts</code></pre>
         </article>
     </section>
 

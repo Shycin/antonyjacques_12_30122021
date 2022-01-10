@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: RenderLegend</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -54,49 +52,245 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <p>Module</p>
+                        <h1>RenderLegend</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+        
+            
+        
+    
+</header>
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
-*/
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
-}
-export default Converter
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>RenderLegend</p></div>
+        
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
+        
+            
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>props</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Array parameter of component</p></td>
+</tr>
+
 
     
-}</code></pre>
-        </article>
-    </section>
+    </tbody>
+</table>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>props.payload</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Const element about parent element</p></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Components_Graph_BarCharts_Render_RenderLegend.js.html" class="button">View Source</a>
+            <span>
+                <a href="Components_Graph_BarCharts_Render_RenderLegend.js.html">Components/Graph/BarCharts/Render/RenderLegend.js</a>, <a href="Components_Graph_BarCharts_Render_RenderLegend.js.html#line3">line 3</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>return (&lt;div className="custom-legend">             &lt;h2>Activité quotidienne&lt;/h2>             &lt;ul>             {                 payload.map( (item, key) => {                     return (&lt;li key={key} style={{color: item.color}}>{item.payload.label}&lt;/li>)                 })             }           &lt;/ul>       &lt;/div>     );       </code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

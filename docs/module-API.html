@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: API</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -54,49 +52,149 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <p>Module</p>
+                        <h1>API</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+        
+            
+        
+    
+</header>
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
-*/
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
-}
-export default Converter
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Request API to perform call on another server</p></div>
+        
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
-}</code></pre>
-        </article>
-    </section>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Services_RequestAPI.js.html" class="button">View Source</a>
+            <span>
+                <a href="Services_RequestAPI.js.html">Services/RequestAPI.js</a>, <a href="Services_RequestAPI.js.html#line3">line 3</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>const request = new RequestAPI()
+    request.CreateNewRequest(userId).then((api) => {
+        setUser(api)
+        api.activity().then((activity) => setUser({ ...activity }))
+        api.average_sessions().then((averageSessions) => setUser({ ...averageSessions }))
+        api.performance().then((performance) => setUser({ ...performance }))
+    })</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

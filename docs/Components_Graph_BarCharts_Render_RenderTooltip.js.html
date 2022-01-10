@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/Graph/BarCharts/Render/RenderTooltip.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/Graph/BarCharts/Render/RenderTooltip.js</h1>
                     </header>
 
                     
@@ -65,36 +65,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
-
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
+            <pre class="prettyprint source linenums"><code>/**
+ * RenderTooltip
+ * @module RenderTooltip
+ * @category 5 - Chart
  * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+ * @prop {Boolean} props.active Tooltip is enable or not
+ * @prop {Array} props.payload Const element about parent element
+ * @prop {Array} props.label Const element contains all string to describe his parent
+ * @example
+ * return (
+ *         	&lt;div className="custom-tooltip">
+ *               {
+ *                   payload.map((item,key)=>{
+ *                       return &lt;p key={key} className="custom-tooltip__label">{item.value}{item.unit}&lt;/p>
+ *                   })
+ *               }
+ *         	&lt;/div>
+ *       );
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
+function RenderTooltip(props) {
+    const {active, payload, label} = props
+    if (active &amp;&amp; payload &amp;&amp; payload.length) {
+        return (
+          	&lt;div className="custom-tooltip">
+                {
+                    payload.map((item,key)=>{
+                        return &lt;p key={key} className="custom-tooltip__label">{item.value}{item.unit}&lt;/p>
+                    })
+                }
+          	&lt;/div>
+        );
     }
-    return {value: value, unit: unit}
-}
-export default Converter
-
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
     
-}</code></pre>
+    return null;
+}
+export default RenderTooltip</code></pre>
         </article>
     </section>
 

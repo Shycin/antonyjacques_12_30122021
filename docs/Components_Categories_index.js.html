@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/Categories/index.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/Categories/index.js</h1>
                     </header>
 
                     
@@ -66,34 +66,35 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+import './index.scss'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
+/**
+ * Categories card
+ * @module Component
+ * @category 3 - Composant
  * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+ * @prop {react} props.icon Dom element
+ * @prop {string} props.userData Data of current user
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
+function Categories(props) {
+    var {icon, userData} = props;
+    return (
+        &lt;div className='Categories'>
+            &lt;div className='Categories__icon'>
+                {icon}
+            &lt;/div>
+            &lt;div className='Categories__value'>
+                &lt;p className='Categories__value__data'>{userData.data.value} {userData.data.unit}&lt;/p>
+                &lt;p className='Categories__value__type'>{userData.type}&lt;/p>
+            &lt;/div>
+        &lt;/div>
+    )
 }
-export default Converter
+export default Categories
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
-    
+Categories.propTypes = {
+    icon: PropTypes.element,
+    userData: PropTypes.object
 }</code></pre>
         </article>
     </section>

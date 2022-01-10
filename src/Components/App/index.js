@@ -18,6 +18,14 @@ import Categories from '../Categories'
 
 import Converter from '../Converter'
 
+/**
+ * App
+ * @module App
+ * @example
+ * return (
+ *   <App/>
+ * )
+*/
 function App() {
     const [user, setUser] = useState(null)
 
@@ -32,10 +40,6 @@ function App() {
             api.performance().then((performance) => setUser({ ...performance }))
         })
     }, [])
-
-    // useEffect(() => {
-    //     console.log(user)
-    // }, [user])
 
     return (
         <div className='App'>

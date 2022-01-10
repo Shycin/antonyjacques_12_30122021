@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/Sidebar/index.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/Sidebar/index.js</h1>
                     </header>
 
                     
@@ -66,34 +66,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+import './index.scss'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+/**
+ * Build Header
+ * @module Header
+ * @category 2 - Navigation
+ * @param {React} children React child for header component
+ * @example
+ * return (
+ *   &lt;Sidebar>{children}&lt;/Sidebar>
+ * )
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
+function Sidebar({ children }) {
+    return &lt;aside>{children}&lt;/aside>
 }
-export default Converter
+export default Sidebar
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
+Sidebar.propTypes = {
+    children: PropTypes.oneOfType([PropTypes.any]),
+}
 
-    
+Sidebar.defaultProps = {
+    children: '',
 }</code></pre>
         </article>
     </section>

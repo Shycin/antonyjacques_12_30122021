@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 
 /**
  * Create and display left vertical menu
+ * @category 3 - Composant
  * @module Picto
- * @component
  * @example
  * const type = 'calories';
  * const color = 'blue';

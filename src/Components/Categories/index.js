@@ -1,7 +1,16 @@
 import PropTypes from 'prop-types'
 import './index.scss'
 
-function Categories({ icon, userData }) {
+/**
+ * Categories card
+ * @module Component
+ * @category 3 - Composant
+ * @param {Array} props Array parameter of component
+ * @prop {react} props.icon Dom element
+ * @prop {string} props.userData Data of current user
+*/
+function Categories(props) {
+    var {icon, userData} = props;
     return (
         <div className='Categories'>
             <div className='Categories__icon'>

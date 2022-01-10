@@ -1,5 +1,18 @@
 import { URL_API_STAT } from './GlobalVariables'
 
+/**
+ * Request API to perform call on another server
+ * @category 6 - API
+ * @module API
+ * @example
+ * const request = new RequestAPI()
+    request.CreateNewRequest(userId).then((api) => {
+        setUser(api)
+        api.activity().then((activity) => setUser({ ...activity }))
+        api.average_sessions().then((averageSessions) => setUser({ ...averageSessions }))
+        api.performance().then((performance) => setUser({ ...performance }))
+    })
+ */
 export default function RequestAPI() {
     this.CreateNewRequest = function (userID) {
         const user = { userID }

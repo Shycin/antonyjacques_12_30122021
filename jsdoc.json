@@ -1,14 +1,12 @@
 {
     "plugins": [
         "plugins/markdown",
-        "node_modules/better-docs/component",
         "node_modules/better-docs/category"
     ],
     "recurseDepth": 10,
     "source": {
         "include": [ "./src" , "./README.md" ],
-        "includePattern": "\\.(jsx|js|ts|tsx)$",
-        "excludePattern": "(^|\\/|\\\\)_"
+        "includePattern": ".+\\.js(doc|x)?$"
     },
     "sourceType": "module",
     "tags": {

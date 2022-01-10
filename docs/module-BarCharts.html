@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: BarCharts</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -54,49 +52,245 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <p>Module</p>
+                        <h1>BarCharts</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+        
+            
+        
+    
+</header>
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
-*/
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
-}
-export default Converter
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>BarCharts</p></div>
+        
 
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
+        
+            
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>props</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">Array</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Array parameter of component</p></td>
+</tr>
+
 
     
-}</code></pre>
-        </article>
-    </section>
+    </tbody>
+</table>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+        
+<tr class="deep-level-0">
+    
+        <td class="name"><code>props.data</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">Array</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Data array</p></td>
+</tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="Components_Graph_BarCharts_index.js.html" class="button">View Source</a>
+            <span>
+                <a href="Components_Graph_BarCharts_index.js.html">Components/Graph/BarCharts/index.js</a>, <a href="Components_Graph_BarCharts_index.js.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>return (      &lt;div className='BarChart'>          &lt;ResponsiveContainer aspect={998/382}>              &lt;BarChart data={data}>                  &lt;CartesianGrid strokeDasharray="2 2" vertical={false}/>                  &lt;XAxis tickLine={false} tickSize={15}/>                  &lt;YAxis yAxisId={1} orientation="right" domain={['dataMin - 1', 'dataMax']} tickCount={3} allowDecimals={false} axisLine={false} tickLine={false} tickSize={40}/>                  &lt;YAxis yAxisId={2} hide={true} padding={{left: 50}}/>                  &lt;Tooltip content={&lt;RenderTooltip />}  position={{ y: 0 }} wrapperStyle={{ left: 50 }}/>                  &lt;Legend verticalAlign="top" align="right" height={36} content={&lt;RenderLegend />} />                  &lt;Bar yAxisId={1} dataKey="kilogram" fill="#282D30" barSize={7} shape={&lt;RenderBarChar />} unit="kg" label="Poids (kg)" />                  &lt;Bar yAxisId={2} dataKey="calories" fill="#E60000" barSize={7} shape={&lt;RenderBarChar />} unit="Kcal" label="Calories brûlées (kCal)" />              &lt;/BarChart>          &lt;/ResponsiveContainer>      &lt;/div>  )</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

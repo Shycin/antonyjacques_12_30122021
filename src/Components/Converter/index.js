@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 /** 
  * Function to convert number over 1000 to quantity with different unit
  * 
+ * @module Converter
+ * @category 4 - Functions
  * @param {Array} props Array parameter of component
  * @prop {number} props.value Integer value to convert if necessary
  * @prop {string} props.unit Base unit of object

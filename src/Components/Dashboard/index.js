@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types'
 import './index.scss'
 
+/**
+ * Build Dashboard
+ * @module Dashboard
+ * @category 3 - Composant
+ * @param {React} children React child for header component
+ * @param {Array} userProfile Array parameter of component
+ * @example
+ * return (
+ *   <Dashboard userProfile={}>{children}</Dashboard>
+ * )
+*/
 function Dashboard({ children, userProfile }) {
     return (
         <div className='Dashboard'>

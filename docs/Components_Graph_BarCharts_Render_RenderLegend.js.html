@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Components/Graph/BarCharts/Render/RenderLegend.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Components/Graph/BarCharts/Render/RenderLegend.js</h1>
                     </header>
 
                     
@@ -65,36 +65,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+            <pre class="prettyprint source linenums"><code>import './RenderLegend.scss'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
+/**
+ * RenderLegend
+ * @module RenderLegend
+ * @category 5 - Chart
  * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
+ * @prop {Array} props.payload Const element about parent element
+ * @example
+ * return (
+ * &lt;div className="custom-legend">
+ *              &lt;h2>Activité quotidienne&lt;/h2>
+ *              &lt;ul>
+ *              {
+ *                  payload.map( (item, key) => {
+ *                      return (&lt;li key={key} style={{color: item.color}}>{item.payload.label}&lt;/li>)
+ *                  })
+ *              }
+ *            &lt;/ul>
+ *        &lt;/div>
+ *      );       
 */
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
-    }
-    return {value: value, unit: unit}
-}
-export default Converter
-
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
+function RenderLegend(props) {
+    const {payload} = props
+    if (payload &amp;&amp; payload.length) {
+        return (
+          &lt;div className="custom-legend">
+                &lt;h2>Activité quotidienne&lt;/h2>
+                &lt;ul>
+                {
+                    payload.map( (item, key) => {
+                        return (&lt;li key={key} style={{color: item.color}}>{item.payload.label}&lt;/li>)
+                    })
+                }
+              &lt;/ul>
+          &lt;/div>
+        );
+      }
     
-}</code></pre>
+      return null;
+}
+export default RenderLegend</code></pre>
         </article>
     </section>
 

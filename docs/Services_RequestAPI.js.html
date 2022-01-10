@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: Components/Converter/index.js</title>
+    <title>JSDoc: Services/RequestAPI.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -55,7 +55,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>Components/Converter/index.js</h1>
+                        <h1>Services/RequestAPI.js</h1>
                     </header>
 
                     
@@ -65,36 +65,69 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+            <pre class="prettyprint source linenums"><code>import { URL_API_STAT } from './GlobalVariables'
 
-/** 
- * Function to convert number over 1000 to quantity with different unit
- * 
- * @module Converter
- * @category 4 - Functions
- * @param {Array} props Array parameter of component
- * @prop {number} props.value Integer value to convert if necessary
- * @prop {string} props.unit Base unit of object
- * @returns {Object} Whether object is convert or keep same value at beginning
-*/
-function Converter(props) {
-    var {value, unit} = props;
-    if(value > 1000){
-        value = (value/1000).toFixed(3)
-        unit = 'K' + unit
+/**
+ * Request API to perform call on another server
+ * @category 6 - API
+ * @module API
+ * @example
+ * const request = new RequestAPI()
+    request.CreateNewRequest(userId).then((api) => {
+        setUser(api)
+        api.activity().then((activity) => setUser({ ...activity }))
+        api.average_sessions().then((averageSessions) => setUser({ ...averageSessions }))
+        api.performance().then((performance) => setUser({ ...performance }))
+    })
+ */
+export default function RequestAPI() {
+    this.CreateNewRequest = function (userID) {
+        const user = { userID }
+
+        user.data = (name = 'profile', path = '') =>
+            new Promise((resole, reject) => {
+                fetch(`${URL_API_STAT}/user/${user.userID}/${path}`)
+                    .then((response) => response.json())
+                    .then((result) => {
+                        user[name] = result.data
+                        resole(user)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        reject(error)
+                    })
+            })
+
+        user.activity = () =>
+            new Promise((resolve) => {
+                user.data('activityData', 'activity').then((dataLoad) =>
+                    resolve(dataLoad)
+                )
+            })
+
+        user.average_sessions = () =>
+            new Promise((resolve) => {
+                user.data('averageSessionsData', 'average-sessions').then(
+                    (dataLoad) => resolve(dataLoad)
+                )
+            })
+
+        user.performance = () =>
+            new Promise((resolve) => {
+                user.data('performanceData', 'performance').then((dataLoad) =>
+                    resolve(dataLoad)
+                )
+            })
+
+        return new Promise((resolve) => {
+            user.data().then((dataLoad) => {
+                Object.assign(user, dataLoad.data)
+                resolve(user)
+            })
+        })
     }
-    return {value: value, unit: unit}
 }
-export default Converter
-
-Converter.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-    }))
-
-    
-}</code></pre>
+</code></pre>
         </article>
     </section>
 
