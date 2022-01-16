@@ -13,6 +13,7 @@ import MenuVertical from '../MenuVertical'
 import Dashboard from '../Dashboard'
 
 import BarCharts from '../Graph/BarCharts'
+import LineCharts from '../Graph/LineCharts'
 
 import Categories from '../Categories'
 
@@ -38,6 +39,7 @@ function App() {
                 setUser({ ...averageSessions })
             )
             api.performance().then((performance) => setUser({ ...performance }))
+            console.log(api)
         })
     }, [])
 
@@ -55,7 +57,14 @@ function App() {
                         {
                             <div className='container-flex--row'>
                                 <div className='container-flex left'>
-                                    { user.activityData ? <BarCharts data={user.activityData.sessions} /> : '' }
+                                    <div>
+                                        { user.activityData ? <BarCharts data={user.activityData.sessions} /> : '' }
+                                    </div>
+                                    <div className='container-flex--row'>
+                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
+                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
+                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
+                                    </div> 
                                 </div>
                                 <div className='container-flex right'>
                                     {

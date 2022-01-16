@@ -1,23 +1,24 @@
 @import '../../../css/main.scss';
 
-.BarChart
+.LineChart
 {
-    padding: 30px 0;
     border-radius: 5px;
+    margin: 5px;
 
-    background-color: $bg-second-color;
+    background-color: $second-color;
 
     width: 100%;
-
-    svg
-    {
-        margin-top: 30px;
-    }
+    height: max-content;
 
     & .custom-legend
     {
         display: flex;
         justify-content: space-between;
+        color: white;
+
+        padding: 20px;
+        width: 95px;
+        font-size: 10px;
     }
 
     & .custom-tooltip
@@ -27,10 +28,8 @@
         justify-content: space-around;
 
         padding: 5px;
-        height: 63px;
 
-        background-color: $second-color;
-        color: white;
+        background-color: white;
 
         font-size: 0.8em;
         font-style: normal;

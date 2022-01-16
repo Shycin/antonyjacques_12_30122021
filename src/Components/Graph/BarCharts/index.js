@@ -33,7 +33,7 @@ function BarCharts(props) {
     const {data} = props
     return (
         <div className='BarChart'>
-            <ResponsiveContainer aspect={998/382}>
+            <ResponsiveContainer aspect={998/382} width={600}>
                 <BarChart data={data}>
                     <CartesianGrid strokeDasharray="2 2" vertical={false}/>
                     <XAxis tickLine={false} tickSize={15}/>

@@ -15,8 +15,9 @@ code {
 .container-flex
 {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
+  flex-direction: column;
 
   &--row
   {
