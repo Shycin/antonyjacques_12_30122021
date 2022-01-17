@@ -7,8 +7,9 @@
 
     background-color: $second-color;
 
-    width: 100%;
-    height: max-content;
+    // width: 100%;
+    width: calc(100% / 3);
+    // height: max-content;
 
     & .custom-legend
     {

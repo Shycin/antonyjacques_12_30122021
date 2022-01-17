@@ -19,12 +19,15 @@ code {
   gap: 10px;
   flex-direction: column;
 
-  &--row
+  &.row
+  {
+    flex-direction: row;
+  }
+
+  &--three
   {
     display: flex;
-    justify-content: center;
+    flex-shrink: 3;
     gap: 10px;
-
-    flex-direction: row;
   }
 }

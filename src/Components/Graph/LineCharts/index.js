@@ -108,7 +108,7 @@ function LineCharts(props) {
      * @param {number} day number a the weekday
      * @returns {string} The letter of the week
      */
-      const newtick = (day) => {
+    const newtick = (day) => {
         return week[day - 1] ? week[day - 1] : ''
     }
 

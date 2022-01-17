@@ -14,6 +14,7 @@ import Dashboard from '../Dashboard'
 
 import BarCharts from '../Graph/BarCharts'
 import LineCharts from '../Graph/LineCharts'
+import RadarCharts from '../Graph/RadarCharts'
 
 import Categories from '../Categories'
 
@@ -55,14 +56,14 @@ function App() {
                 {user ? 
                     <Dashboard userProfile={user.profile}>
                         {
-                            <div className='container-flex--row'>
+                            <div className='container-flex row'>
                                 <div className='container-flex left'>
                                     <div>
                                         { user.activityData ? <BarCharts data={user.activityData.sessions} /> : '' }
                                     </div>
-                                    <div className='container-flex--row'>
+                                    <div className='container-flex--three row'>
                                         { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
-                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
+                                        { user.performanceData ? <RadarCharts tags={user.performanceData.kind} data={user.performanceData.data} /> : '' }
                                         { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
                                     </div> 
                                 </div>
