@@ -58,7 +58,7 @@ main
 {
 	display: flex;
 	width: 100%;
-	height: calc(100vh - 100px);
+	min-height: calc(100vh - 100px);
 }
 
 
@@ -71,4 +71,9 @@ main
 {
 	flex-direction: column;
 	flex: 0 0 180px;
+}
+
+.widgets
+{
+	margin-top: 30px;
 }

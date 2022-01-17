@@ -1,0 +1,14 @@
+@import '../../../css/main.scss';
+
+.RadialBarChart
+{
+    border-radius: 5px;
+    margin: 5px;
+
+    width: 100%;
+
+    background-color: $bg-second-color;
+
+    word-break: break-word;
+    text-align: center;
+}

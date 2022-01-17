@@ -6,12 +6,37 @@
     margin: 5px;
 
     background-color: #282D30;
-    color: white;
 
-    // width: 100%;
-    // flex-basis: 100%;
-    width: calc(100% / 3);
-    // height: max-content;
+    width: 100%;
 
     font-size: 12px;
+
+    .recharts-polar-grid .recharts-polar-grid-angle
+    {
+        display: none;
+    }
+
+
+    .recharts-surface .recharts-polar-angle-axis .recharts-polar-angle-axis-ticks
+    {
+        .recharts-polar-angle-axis-tick:nth-child(2)
+        {
+            transform: translate(-15px, -10px);
+        }
+
+        .recharts-polar-angle-axis-tick:nth-child(3)
+        {
+            transform: translate(-30px, 20px);
+        }
+
+        .recharts-polar-angle-axis-tick:nth-child(5)
+        {
+            transform: translate(15px, 10px);
+        }
+
+        .recharts-polar-angle-axis-tick:nth-child(6)
+        {
+            transform: translate(25px, -10px);
+        }
+    }
 }

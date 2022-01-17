@@ -2,6 +2,25 @@ import { ResponsiveContainer, RadarChart , PolarGrid, PolarAngleAxis, Radar } fr
 
 import './index.scss'
 
+/**
+ * BarCharts
+ * @module RadarCharts
+ * @category 5 - Chart
+ * @param {Array} props Array parameter of component
+ * @prop {Array} props.data Data array
+ * @example
+ * return (
+ *       <div className='RadarChart'>
+ *           <ResponsiveContainer aspect={1/1}>
+ *               <RadarChart data={data}>
+ *                   <PolarGrid />
+ *                   <PolarAngleAxis dataKey="kind" tickFormatter={newtick}/>
+ *                   <Radar name="value" dataKey="value" fill="#FF0101" fillOpacity={0.6} />
+ *               </RadarChart>
+ *           </ResponsiveContainer>
+ *       </div>
+ *   )
+*/
 function RadarCharts(props) {
     const {data, tags} = props
 
@@ -17,10 +36,10 @@ function RadarCharts(props) {
 
     return (
         <div className='RadarChart'>
-            <ResponsiveContainer aspect={1/1} /*width={180}*/>
+            <ResponsiveContainer aspect={1/1}>
                 <RadarChart data={data}>
                     <PolarGrid />
-                    <PolarAngleAxis dataKey="kind" tickFormatter={newtick}/>
+                    <PolarAngleAxis dataKey="kind" tickFormatter={newtick} stroke='white' tickLine={false} />
                     <Radar name="value" dataKey="value" fill="#FF0101" fillOpacity={0.6} />
                 </RadarChart>
             </ResponsiveContainer>
