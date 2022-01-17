@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useRef, useState } from "react"
 import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, ReferenceArea } from 'recharts'
 import RenderLegend from './Render/RenderLegend'
@@ -11,63 +12,6 @@ import './index.scss'
  * @category 5 - Chart
  * @param {Array} props Array parameter of component
  * @prop {Array} props.data Data array
- * @example
- * return (
- *       <div className='LineChart' ref={graphRef}>
- *           <ResponsiveContainer aspect={1/1}>
- *               <LineChart>
- *                   <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false}/>
- *                   <XAxis 
- *                       dataKey="day" 
- *                       tickLine={false} 
- *                       tick={true} 
- *                       axisLine={false} 
- *                       tickFormatter={newtick}
- *                       type="number"
- *                       domain={['dataMin - 1', 'dataMax + 1']}
- *                       tickCount={9}
- *                   />
- *                   <YAxis 
- *                       hide={true} 
- *                       domain={['dataMin - 10', 'dataMax + 10']}
- *                   />
- *                   <Tooltip 
- *                       content={<RenderTooltip />} 
- *                       cursor={false}
- *                   />
- *                   <Legend 
- *                       margin={{
- *                           left: 10,
- *                           right: 10
- *                           }}
- *                       verticalAlign="top" 
- *                       align="right" 
- *                       height={36} 
- *                       content={<RenderLegend />} 
- *                   />
- *                   <Line 
- *                       type="natural" 
- *                       dataKey="sessionLength" 
- *                       stroke="#ffffff"
- *                       strokeWidth={2} 
- *                       dot={false} 
- *                       activeDot={{ r: 8 }} 
- *                       connectNulls={true} 
- *                       unit="min"
- *                   />
- *                   {hover && <ReferenceArea
- *                           x1={hover.x}
- *                           x2={7}
- *                           y1={-20}
- *                           y2={100}
- *                           fill="#000"
- *                           fillOpacity="0.1"
- *                           shape={<ReferenceBands />}
- *                   />}
- *              </LineChart>
- *          </ResponsiveContainer>
- *      </div>
- *   )
 */
 function LineCharts(props) {
     const week = ['L','M','M','J','V','S','D']
@@ -75,6 +19,11 @@ function LineCharts(props) {
     const graphRef = useRef(null)
     const [hover, setHover] = useState(null)
 
+    /**
+     * Draw path svg to make hover box
+     * @function ReferenceBands
+     * @param {array} props send by ReferenceArea
+     */
     const ReferenceBands = (props) => {
         const { x1 } = props
         const { offsetWidth } = graphRef.current
@@ -174,3 +123,8 @@ function LineCharts(props) {
     )
 }
 export default LineCharts
+
+LineCharts.propTypes = {
+    props: PropTypes.array,
+    data: PropTypes.arrayOf(PropTypes.any)
+}

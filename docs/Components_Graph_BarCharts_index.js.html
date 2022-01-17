@@ -47,7 +47,7 @@
             <div class="column is-3" id="sidebarNav">
                 <div class="sidebar">
                     <nav>
-                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li></ul></div><div class="category"><h2>1 - Constant</h2><h3>Global</h3><ul><li><a href="global.html#URL_API_STAT">URL_API_STAT</a></li><li><a href="global.html#userId">userId</a></li></ul></div><div class="category"><h2>2 - Navigation</h2><h3>Modules</h3><ul><li><a href="module-Header.html">Header</a></li><li><a href="module-MenuHorizontal.html">MenuHorizontal</a></li><li><a href="module-MenuVertical.html">MenuVertical</a></li></ul></div><div class="category"><h2>3 - Composant</h2><h3>Modules</h3><ul><li><a href="module-Component.html">Component</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-Picto.html">Picto</a></li></ul></div><div class="category"><h2>4 - Functions</h2><h3>Modules</h3><ul><li><a href="module-Converter.html">Converter</a></li></ul></div><div class="category"><h2>5 - Chart</h2><h3>Modules</h3><ul><li><a href="module-BarCharts.html">BarCharts</a></li><li><a href="module-RenderBarChars.html">RenderBarChars</a></li><li><a href="module-RenderLegend.html">RenderLegend</a></li><li><a href="module-RenderTooltip.html">RenderTooltip</a></li></ul></div><div class="category"><h2>6 - API</h2><h3>Modules</h3><ul><li><a href="module-API.html">API</a></li></ul></div>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li></ul></div><div class="category"><h2>1 - Constant</h2><h3>Global</h3><ul><li><a href="global.html#URL_API_STAT">URL_API_STAT</a></li><li><a href="global.html#userId">userId</a></li></ul></div><div class="category"><h2>2 - Navigation</h2><h3>Modules</h3><ul><li><a href="module-Header.html">Header</a></li><li><a href="module-MenuHorizontal.html">MenuHorizontal</a></li><li><a href="module-MenuVertical.html">MenuVertical</a></li></ul></div><div class="category"><h2>3 - Composant</h2><h3>Modules</h3><ul><li><a href="module-Component.html">Component</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-Picto.html">Picto</a></li></ul></div><div class="category"><h2>4 - Functions</h2><h3>Modules</h3><ul><li><a href="module-Converter.html">Converter</a></li></ul></div><div class="category"><h2>5 - Chart</h2><h3>Modules</h3><ul><li><a href="module-BarCharts.html">BarCharts</a></li><li><a href="module-LineCharts.html">LineCharts</a></li><li><a href="module-RadarCharts.html">RadarCharts</a></li><li><a href="module-RadialBarCharts.html">RadialBarCharts</a></li><li><a href="module-RenderBarChars.html">RenderBarChars</a></li><li><a href="module-RenderLegend.html">RenderLegend</a></li><li><a href="module-RenderTooltip.html">RenderTooltip</a></li></ul></div><div class="category"><h2>6 - API</h2><h3>Modules</h3><ul><li><a href="module-API.html">API</a></li></ul></div>
                     </nav>
                 </div>
             </div>
@@ -65,7 +65,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Label } from 'recharts'
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Label } from 'recharts'
 import RenderLegend from './Render/RenderLegend'
 import RenderTooltip from './Render/RenderTooltip'
 import RenderBarChar from './Render/RenderBar'
@@ -78,23 +79,6 @@ import './index.scss'
  * @category 5 - Chart
  * @param {Array} props Array parameter of component
  * @prop {Array} props.data Data array
- * @example
- * return (
- *       &lt;div className='BarChart'>
- *           &lt;ResponsiveContainer aspect={998/382}>
- *               &lt;BarChart data={data}>
- *                   &lt;CartesianGrid strokeDasharray="2 2" vertical={false}/>
- *                   &lt;XAxis tickLine={false} tickSize={15}/>
- *                   &lt;YAxis yAxisId={1} orientation="right" domain={['dataMin - 1', 'dataMax']} tickCount={3} allowDecimals={false} axisLine={false} tickLine={false} tickSize={40}/>
- *                   &lt;YAxis yAxisId={2} hide={true} padding={{left: 50}}/>
- *                   &lt;Tooltip content={&lt;RenderTooltip />}  position={{ y: 0 }} wrapperStyle={{ left: 50 }}/>
- *                   &lt;Legend verticalAlign="top" align="right" height={36} content={&lt;RenderLegend />} />
- *                   &lt;Bar yAxisId={1} dataKey="kilogram" fill="#282D30" barSize={7} shape={&lt;RenderBarChar />} unit="kg" label="Poids (kg)" />
- *                   &lt;Bar yAxisId={2} dataKey="calories" fill="#E60000" barSize={7} shape={&lt;RenderBarChar />} unit="Kcal" label="Calories brûlées (kCal)" />
- *               &lt;/BarChart>
- *           &lt;/ResponsiveContainer>
- *       &lt;/div>
- *   )
 */
 function BarCharts(props) {
     const {data} = props
@@ -115,7 +99,12 @@ function BarCharts(props) {
         &lt;/div>
     )
 }
-export default BarCharts</code></pre>
+export default BarCharts
+
+BarCharts.propTypes = {
+    props: PropTypes.array,
+    data: PropTypes.arrayOf(PropTypes.any)
+}</code></pre>
         </article>
     </section>
 
@@ -130,7 +119,7 @@ export default BarCharts</code></pre>
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Jan 10 2022 22:00:11 GMT+0100 (heure normale d’Europe centrale)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Jan 17 2022 16:35:28 GMT+0100 (heure normale d’Europe centrale)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>

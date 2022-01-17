@@ -18,9 +18,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "doc": "SET NODE_ENV=production && jsdoc -c jsdoc.json",
-        "builddoc": "cross-env NODE_ENV=development parcel build docs/entry.js --out-dir docs/build",
-        "doccss": "node-sass --include-path scss ./src/sass/doc.scss ./docs/styles.css"
+        "doc": "jsdoc -c jsdoc.json"
     },
     "eslintConfig": {
         "extends": [

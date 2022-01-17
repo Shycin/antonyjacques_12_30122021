@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { ResponsiveContainer, RadarChart , PolarGrid, PolarAngleAxis, Radar } from 'recharts'
 
 import './index.scss'
@@ -8,27 +9,15 @@ import './index.scss'
  * @category 5 - Chart
  * @param {Array} props Array parameter of component
  * @prop {Array} props.data Data array
- * @example
- * return (
- *       <div className='RadarChart'>
- *           <ResponsiveContainer aspect={1/1}>
- *               <RadarChart data={data}>
- *                   <PolarGrid />
- *                   <PolarAngleAxis dataKey="kind" tickFormatter={newtick}/>
- *                   <Radar name="value" dataKey="value" fill="#FF0101" fillOpacity={0.6} />
- *               </RadarChart>
- *           </ResponsiveContainer>
- *       </div>
- *   )
 */
 function RadarCharts(props) {
     const {data, tags} = props
 
     /**
-     * Set the day tick
+     * Set the tags tick
      * @function newtick
      * @param {number} tags number in tag type
-     * @returns {string} The name of sport
+     * @returns {string} The name of training
      */
     const newtick = (tag) => {
         return tags[tag] ? tags[tag] : ''
@@ -47,3 +36,8 @@ function RadarCharts(props) {
     )
 }
 export default RadarCharts
+
+RadarCharts.propTypes = {
+    props: PropTypes.array,
+    data: PropTypes.arrayOf(PropTypes.any)
+}

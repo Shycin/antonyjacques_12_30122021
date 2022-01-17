@@ -41,7 +41,6 @@ function App() {
                 setUser({ ...averageSessions })
             )
             api.performance().then((performance) => setUser({ ...performance }))
-            console.log(api)
         })
     }, [])
 

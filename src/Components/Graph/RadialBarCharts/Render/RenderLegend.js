@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import './RenderLegend.scss'
 
 /**
  * RenderLegend
@@ -8,17 +7,17 @@ import './RenderLegend.scss'
  * @param {Array} props Array parameter of component
  * @prop {Array} props.payload Const element about parent element
 */
-function RenderLegend(props) {
-    const {payload} = props
-    if (payload && payload.length) {
-        return (
-          <div className="custom-legend">
-                <h2>Durée moyenne des sessions</h2>
-          </div>
-        );
+const RenderLegend = (props) => {
+  const { payload } = props;
+  return (
+    <ul>
+      {
+        payload.map((entry, index) => {
+          return (<li key={`item-${index}`}><h2>{entry.payload.value * 100}%</h2> {entry.payload.label}</li>)
+        })
       }
-    
-      return null;
+    </ul>
+  );
 }
 export default RenderLegend
 
