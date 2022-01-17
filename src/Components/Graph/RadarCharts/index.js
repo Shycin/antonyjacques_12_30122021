@@ -1,6 +1,4 @@
-import { ResponsiveContainer, RadarChart , PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, Line, ReferenceArea } from 'recharts'
-import RenderLegend from './Render/RenderLegend'
-import RenderTooltip from './Render/RenderTooltip'
+import { ResponsiveContainer, RadarChart , PolarGrid, PolarAngleAxis, Radar } from 'recharts'
 
 import './index.scss'
 
