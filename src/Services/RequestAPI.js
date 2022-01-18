@@ -18,12 +18,16 @@ export default function RequestAPI() {
         const user = { userID }
 
         user.data = (name = 'profile', path = '') =>
-            new Promise((resole, reject) => {
+            new Promise((resovle, reject) => {
                 fetch(`${URL_API_STAT}/user/${user.userID}/${path}`)
                     .then((response) => response.json())
                     .then((result) => {
                         user[name] = result.data
-                        resole(user)
+
+                        // simulate delay time between 2 servers
+                        setTimeout(function(){
+                            resovle(user)
+                        }, 2000)
                     })
                     .catch((error) => {
                         console.log(error)

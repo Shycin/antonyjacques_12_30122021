@@ -19,6 +19,8 @@ import RadialBarCharts from '../Graph/RadialBarCharts'
 
 import Categories from '../Categories'
 
+import Loader from '../Loader'
+
 import Converter from '../Converter'
 
 /**
@@ -59,12 +61,12 @@ function App() {
                             <div className='container-flex row'>
                                 <div className='container-flex left'>
                                     <div>
-                                        { user.activityData ? <BarCharts data={user.activityData.sessions} /> : '' }
+                                        { user.activityData ? <BarCharts data={user.activityData.sessions} /> : <Loader /> }
                                     </div>
                                     <div className='container-flex--three row widgets'>
-                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : '' }
-                                        { user.performanceData ? <RadarCharts tags={user.performanceData.kind} data={user.performanceData.data} /> : '' }
-                                        { user.profile ? <RadialBarCharts data={user.profile} /> : '' }
+                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : <Loader /> }
+                                        { user.performanceData ? <RadarCharts tags={user.performanceData.kind} data={user.performanceData.data} /> : <Loader /> }
+                                        { user.profile ? <RadialBarCharts data={user.profile} /> : <Loader /> }
                                     </div> 
                                 </div>
                                 <div className='container-flex right'>
@@ -97,7 +99,7 @@ function App() {
                             
                         }
                     </Dashboard> 
-                : ''}
+                : <Loader />}
 
                 
             </main>   
