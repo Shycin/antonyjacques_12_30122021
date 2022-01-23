@@ -33,17 +33,34 @@ import Converter from '../Converter'
 */
 function App() {
     const [user, setUser] = useState(null)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const request = new RequestAPI()
         request.CreateNewRequest(userId).then((api) => {
             setUser(api)
-            api.activity().then((activity) => setUser({ ...activity }))
-            api.average_sessions().then((averageSessions) =>
-                setUser({ ...averageSessions })
-            )
-            api.performance().then((performance) => setUser({ ...performance }))
+            api.activity()
+                .then((activity) => setUser({ ...activity })
+                , (error) => {
+                    setError(errors => ({ ...errors, activity: 'erreur' }))
+                })
+
+            api.average_sessions()
+                .then((averageSessions) => setUser({ ...averageSessions })
+                , (error) => {
+                    setError(errors => ({ ...errors, averageSessions: 'erreur' }))
+                })
+
+            api.performance()
+                .then((performance) => setUser({ ...performance })
+                , (error) => {
+                    setError(errors => ({ ...errors, performance: 'erreur' }))
+                })
+
+        }, (error) => {
+            setError({...error, main: 'Le serveur n\'est pas disponible pour le moment'})
         })
+
     }, [])
 
     return (
@@ -61,12 +78,12 @@ function App() {
                             <div className='container-flex row'>
                                 <div className='container-flex left'>
                                     <div>
-                                        { user.activityData ? <BarCharts data={user.activityData.sessions} /> : <Loader /> }
+                                        { user.activityData ? <BarCharts data={user.activityData.sessions} /> : <Loader error={error.activity}/> }
                                     </div>
                                     <div className='container-flex--three row widgets'>
-                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : <Loader /> }
-                                        { user.performanceData ? <RadarCharts tags={user.performanceData.kind} data={user.performanceData.data} /> : <Loader /> }
-                                        { user.profile ? <RadialBarCharts data={user.profile} /> : <Loader /> }
+                                        { user.averageSessionsData ? <LineCharts data={user.averageSessionsData.sessions} /> : <Loader error={error.averageSessions}/> }
+                                        { user.performanceData ? <RadarCharts tags={user.performanceData.kind} data={user.performanceData.data} /> : <Loader error={error.performance}/> }
+                                        { user.profile ? <RadialBarCharts data={user.profile} /> : <Loader error={error.main}/> }
                                     </div> 
                                 </div>
                                 <div className='container-flex right'>
@@ -99,7 +116,7 @@ function App() {
                             
                         }
                     </Dashboard> 
-                : <Loader />}
+                : <Loader error={error.main}/>}
 
                 
             </main>   

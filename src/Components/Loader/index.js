@@ -1,4 +1,5 @@
 import './index.scss'
+import PropTypes from 'prop-types'
 
 /**
  * Categories card
@@ -9,9 +10,18 @@ import './index.scss'
  *   <Header>{children}</Header>
  * )
 */
-function Loader() {
+function Loader(props) {
+    const {error} = props
     return (
-        <div className='Loader'><div className='spinner'></div></div>
+        <div className='Loader'>
+            { error ? <div className='error'>{error}</div> : '' }
+            <div className='spinner'></div>
+        </div>
     )
 }
 export default Loader
+
+Loader.propTypes = {
+    props: PropTypes.array,
+    error: PropTypes.string
+}

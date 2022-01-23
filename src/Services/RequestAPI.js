@@ -18,48 +18,62 @@ export default function RequestAPI() {
         const user = { userID }
 
         user.data = (name = 'profile', path = '') =>
-            new Promise((resovle, reject) => {
+            new Promise((resolve, reject) => {
                 fetch(`${URL_API_STAT}/user/${user.userID}/${path}`)
+                .catch((error) => {
+                    reject(error)
+                })
                     .then((response) => response.json())
-                    .then((result) => {
-                        user[name] = result.data
-
-                        // simulate delay time between 2 servers
-                        setTimeout(function(){
-                            resovle(user)
-                        }, 2000)
-                    })
                     .catch((error) => {
-                        console.log(error)
                         reject(error)
                     })
+                        .then((result) => {
+                            user[name] = result.data
+
+                            // simulate delay time between 2 servers
+                            setTimeout(function(){
+                                resolve(user)
+                            }, 2000)
+                        })
+                        .catch((error) => {
+                            reject(error)
+                        })
             })
 
         user.activity = () =>
-            new Promise((resolve) => {
+            new Promise((resolve, reject) => {
                 user.data('activityData', 'activity').then((dataLoad) =>
                     resolve(dataLoad)
-                )
+                ).catch((error) => {
+                    reject(error)
+                })
             })
 
         user.average_sessions = () =>
-            new Promise((resolve) => {
+            new Promise((resolve, reject) => {
                 user.data('averageSessionsData', 'average-sessions').then(
                     (dataLoad) => resolve(dataLoad)
-                )
+                ).catch((error) => {
+                    reject(error)
+                })
             })
 
         user.performance = () =>
-            new Promise((resolve) => {
+            new Promise((resolve, reject) => {
                 user.data('performanceData', 'performance').then((dataLoad) =>
                     resolve(dataLoad)
-                )
+                ).catch((error) => {
+                    reject(error)
+                })
             })
 
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             user.data().then((dataLoad) => {
                 Object.assign(user, dataLoad.data)
                 resolve(user)
+            })
+            .catch((error) => {
+                reject(error)
             })
         })
     }

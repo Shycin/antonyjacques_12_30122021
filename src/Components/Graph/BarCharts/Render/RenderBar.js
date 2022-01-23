@@ -13,7 +13,7 @@ import PropTypes from 'prop-types'
 */
 function RenderBarChar(props) {
     const { fill, x, y, width, height } = props;
-      
+
         return (
             <g fill={fill}>
                 <rect y={y} x={x} width={width} height={height} />
