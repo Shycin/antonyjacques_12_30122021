@@ -58,7 +58,7 @@ function App() {
                 })
 
         }, (error) => {
-            setError({...error, main: 'Le serveur n\'est pas disponible pour le moment'})
+            setError({...error, main: 'La récupération des données est indisponible'})
         })
 
     }, [])
