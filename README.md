@@ -2,6 +2,9 @@
 
 ### First install the node server
 
+- [NodeJS (**version 14.17.6**)](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+
 ``See how install and start node server for the API here :``
 [Server for the API](https://github.com/Shycin/P9-front-end-dashboard)
 
